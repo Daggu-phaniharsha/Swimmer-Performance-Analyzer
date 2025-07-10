@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Swimmer Performance Analysis and Prediction</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .predicted-time-row {
+        background-color: #e0f7fa; /* Light blue background */
+        font-weight: bold; /* Make the text bold */
+        border: 2px solid #81d4fa; /* Add a border */
+      }
+
+      /* You can also style the cells within the predicted time row */
+      .predicted-time-row td {
+        padding: 12px; /* Increase padding for better visual separation */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+      }
+
+      #recommendation {
+        margin-top: 20px;
+        padding: 20px; /* Increased padding */
+        background-color: #f0f8ff; /* Light background color */
+        border: 1px solid #add8e6; /* Light border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        font-size: 20px; /* Slightly larger font */
+        line-height: 1.6; /* Improved line spacing */
+      }
+
+      #recommendation strong {
+        color: #007bff; /* Highlight the "Recommendation" label */
+        font-weight: bold;
+        display: block; /* Make it a block element */
+        margin-bottom: 10px; /* Add some space below the label */
+      }
+
+      #recommendation p {
+        margin: 0; /* Remove default paragraph margins */
+      }
+
+      #metricRecommendations {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light background color */
+        border: 1px solid #ddd; /* Light border */
+        border-radius: 8px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      #metricRecommendations h2 {
+        color: #007bff; /* Highlight the heading */
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      #metricRecommendations ul {
+        list-style-type: disc; /* Use bullet points */
+        padding-left: 20px;
+        margin: 0;
+      }
+
+      #metricRecommendations li {
+        margin-bottom: 10px;
+      }
+
+      #metricRecommendations li:last-child {
+        margin-bottom: 0; /* Remove bottom margin from the last item */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Swimmer Performance Analysis and Prediction</h1>
+
+    <input type="text" id="swimmerName" placeholder="Enter Swimmer Name" />
+    <button onclick="analyzeSwimmer()">Analyze</button>
+
+    <div id="metrics"></div>
+
+    <div id="plot"></div>
+
+    <div id="recommendation"></div>
+
+    <div id="metricRecommendations"></div>
+    <script>
+      function analyzeSwimmer() {
+        const swimmerName = document.getElementById("swimmerName").value;
+        const metricsDiv = document.getElementById("metrics");
+        const plotDiv = document.getElementById("plot");
+        const recommendationDiv = document.getElementById("recommendation");
+        const metricRecommendationsDiv = document.getElementById(
+          "metricRecommendations"
+        );
+
+        metricsDiv.innerHTML = "";
+        plotDiv.innerHTML = "";
+        recommendationDiv.innerHTML = "";
+        metricRecommendationsDiv.innerHTML = "";
+
+        fetch(`/swimmer/${swimmerName}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              metricsDiv.innerHTML = `<p>${data.error}</p>`;
+              return;
+            }
+
+            // Format metrics as a table with ordered metrics
+            let metricsHTML = "<h2>Metrics</h2>";
+            metricsHTML += "<table>";
+            metricsHTML += `<tr><td>Age:</td><td>${data.age}</td></tr>`;
+
+            const orderedMetrics = [
+              "Distance",
+
+              "Heart Rate",
+
+              "Velocity",
+
+              "Total Time",
+
+              "Average Lap Time",
+
+              "Predicted time for next race",
+            ];
+
+            orderedMetrics.forEach((key) => {
+              let rowClass = "";
+              if (key === "Predicted time for next race") {
+                rowClass = "predicted-time-row";
+              }
+
+              metricsHTML += `<tr class="${rowClass}"><td>${key}:</td><td>${
+                data.metrics[
+                  key === "Predicted time for next race"
+                    ? "Predicted Time"
+                    : key
+                ]
+              }</td></tr>`;
+            });
+
+            metricsHTML += "</table>";
+            metricsDiv.innerHTML = metricsHTML;
+
+            // Display plot
+            plotDiv.innerHTML = `<img src="data:image/png;base64,${data.plot}">`;
+
+            // Display recommendation
+            recommendationDiv.innerHTML = `<p><strong>Recommendation:</strong> ${data.recommendation}</p>`;
+
+            // Display metric-specific recommendations
+            let metricRecommendationsHTML =
+              "<h2>Metric-Specific Recommendations</h2><ul>";
+            data.metric_recommendations.forEach((recommendation) => {
+              metricRecommendationsHTML += `<li>${recommendation}</li>`;
+            });
+            metricRecommendationsHTML += "</ul>";
+            metricRecommendationsDiv.innerHTML = metricRecommendationsHTML;
+          })
+          .catch((error) => {
+            metricsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            plotDiv.innerHTML = "";
+            recommendationDiv.innerHTML = "";
+            metricRecommendationsDiv.innerHTML = "";
+          });
+      }
+    </script>
+  </body>
+</html>
