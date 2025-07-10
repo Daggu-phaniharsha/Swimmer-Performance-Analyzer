@@ -88,22 +88,22 @@ Metrics and suggestions
 
    Ensure Python 3.7+ is installed. Then install the required packages:
 
-           pip install Flask pandas matplotlib scikit-learn numpy
+      pip install Flask pandas matplotlib scikit-learn numpy
 
 * ▶️ Running the App
-1. Extract the Data
+1. Ensure Data Folder is Present
+   
+   Confirm that the swimmer_data/ folder (containing .txt files) exists in the same directory as app.py.
 
-   Unzip swimmer_data.zip into the same folder as app.py.
-
-2. Navigate to the Project Folder
+3. Navigate to the Project Folder
 
         cd Swimmer_Performance_Analyzer
 
-3. Start the Flask App
+4. Start the Flask App
 
         python app.py
 
-4. Open in Browser
+5. Open in Browser
 
    Visit http://127.0.0.1:5000/ to access the main UI.
 
