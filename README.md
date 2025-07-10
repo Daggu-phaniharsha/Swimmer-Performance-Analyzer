@@ -1,6 +1,5 @@
-<h1 align="center">
-          🏊‍♂️ Swimmer Performance Analyzer
-</h1>
+<h1 align="center"> 🏊‍♂️ Swimmer Performance Analyzer </h1>
+
 
 Welcome to the Swimmer Performance Analyzer – a web-based application designed to analyze swimmer performance data, visualize key metrics, and provide personalized recommendations for improvement.
 
@@ -10,6 +9,7 @@ Welcome to the Swimmer Performance Analyzer – a web-based application designed
 ### 🚀 Project Overview
 
 This tool is ideal for swimmers, coaches, and performance analysts. By processing raw lap time data, it offers valuable insights into trends, pacing, consistency, and predicts future race outcomes. The analysis is presented via an interactive web interface.
+
 
 ### ✨ Features
 
@@ -36,35 +36,38 @@ A clean Flask-powered web UI for displaying results and plots.
 
 
 
-⚙️ How It Works
+### ⚙️ How It Works
+
 1️⃣ Data Ingestion
 The process_files() function scans for .txt files named like SwimmerName-Age-DistanceStroke.txt (e.g., JohnDoe-18-100mFreestyle.txt) and reads lap times in minutes:seconds format.
 
 2️⃣ Data Analysis
-parse_time(): Converts time to seconds
+* parse_time(): Converts time to seconds
 
-calculate_velocity(): Computes speed
+* calculate_velocity(): Computes speed
 
-analyze_swimmer():
+* analyze_swimmer():
 
-Filters swimmer-specific data
+* Filters swimmer-specific data
 
-Computes performance metrics
+* Computes performance metrics
 
-Generates plots
+* Generates plots
 
-Predicts race time using linear regression
+* Predicts race time using linear regression
 
-Estimates heart rate
+* Estimates heart rate
 
-Outputs personalized tips
+* Outputs personalized tips
 
 3️⃣ Web Interface
-The app uses Flask to serve a web UI (index.html)
+* The app uses Flask to serve a web UI (index.html)
 
-Data is fetched via the /swimmer/<name> route and returned as a JSON response with:
+* Data is fetched via the /swimmer/<name> route and returned as a JSON response with:
 
+   • Total Race Times: Tracks a swimmer’s race performance over time.
 Base64-encoded plots
 
+   • Total Race Times: Tracks a swimmer’s race performance over time.
 Metrics and suggestions
 
