@@ -85,9 +85,10 @@ Metrics and suggestions
 ## 🔧 Getting Started
 
 * ✅ Prerequisites
-Ensure Python 3.7+ is installed. Then install the required packages:
 
-    pip install Flask pandas matplotlib scikit-learn numpy
+   Ensure Python 3.7+ is installed. Then install the required packages:
+
+           pip install Flask pandas matplotlib scikit-learn numpy
 
 * ▶️ Running the App
 1. Extract the Data
