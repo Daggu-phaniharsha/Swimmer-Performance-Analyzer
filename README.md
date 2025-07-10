@@ -13,26 +13,28 @@ This tool is ideal for swimmers, coaches, and performance analysts. By processin
 
 ### ✨ Features
 
-####  • 📂 Data Processing
+* 📂 Data Processing
 Automatically extracts swimmer info (name, age, distance, stroke, lap times) from .txt files.
 
-####  • 📊 Performance Metrics
+* 📊 Performance Metrics
 Calculates key statistics like total race time, average lap time, velocity, and estimated heart rate.
 
-####  • 📈 Visualizations
+* 📈 Visualizations
 
    • Total Race Times: Tracks a swimmer’s race performance over time.
 
    • Average Lap Times by Distance & Stroke: Pinpoints areas for improvement based on lap analysis.
 
-🔮 Performance Prediction
+* 🔮 Performance Prediction
 Uses linear regression to predict a swimmer's next race time.
 
-💡 Personalized Recommendations
+* 💡 Personalized Recommendations
 Actionable feedback based on lap time consistency, velocity trends, and heart rate analysis.
 
-🌐 Web Interface
+* 🌐 Web Interface
 A clean Flask-powered web UI for displaying results and plots.
+
+
 
 ⚙️ How It Works
 1️⃣ Data Ingestion
