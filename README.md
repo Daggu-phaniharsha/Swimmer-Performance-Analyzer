@@ -39,7 +39,8 @@ A clean Flask-powered web UI for displaying results and plots.
 
 1️⃣ Data Ingestion
 
-The process_files() function scans for .txt files named like SwimmerName-Age-DistanceStroke.txt (e.g., JohnDoe-18-100mFreestyle.txt) and reads lap times in minutes:seconds format.
+
+   The process_files() function scans for .txt files named like SwimmerName-Age-DistanceStroke.txt (e.g., JohnDoe-18-100mFreestyle.txt) and reads lap times in minutes:seconds format.
 
 2️⃣ Data Analysis
 * parse_time(): Converts time to seconds
