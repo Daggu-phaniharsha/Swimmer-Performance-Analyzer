@@ -1,4 +1,4 @@
-<h1 align="center"> 🏊‍♂️ Swimmer Performance Analyzer </h1>
+<h1 align="center"> 🏊‍♂️ Swimmer Performance Analysis </h1>
 
 
 Welcome to the Swimmer Performance Analyzer – a web-based application designed to analyze swimmer performance data, visualize key metrics, and provide personalized recommendations for improvement.
