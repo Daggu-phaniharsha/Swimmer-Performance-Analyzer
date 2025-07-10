@@ -6,12 +6,12 @@ Welcome to the Swimmer Performance Analyzer – a web-based application designed
 > 📦 Note: This project contains large data files. They are compressed into swimmer_data.zip for easier download and to keep the repository lightweight. Be sure to extract this zip file to access the data.
 
 
-### 🚀 Project Overview
+## 🚀 Project Overview
 
 This tool is ideal for swimmers, coaches, and performance analysts. By processing raw lap time data, it offers valuable insights into trends, pacing, consistency, and predicts future race outcomes. The analysis is presented via an interactive web interface.
 
 
-### ✨ Features
+## ✨ Features
 
 * 📂 Data Processing
 Automatically extracts swimmer info (name, age, distance, stroke, lap times) from .txt files.
@@ -36,7 +36,7 @@ A clean Flask-powered web UI for displaying results and plots.
 
 
 
-### ⚙️ How It Works
+## ⚙️ How It Works
 
 1️⃣ Data Ingestion
 The process_files() function scans for .txt files named like SwimmerName-Age-DistanceStroke.txt (e.g., JohnDoe-18-100mFreestyle.txt) and reads lap times in minutes:seconds format.
@@ -70,4 +70,16 @@ Base64-encoded plots
 
    • Total Race Times: Tracks a swimmer’s race performance over time.
 Metrics and suggestions
+
+## 🗂️ Repository Structure
+
+      Swimmer_Performance_Analyzer/
+      │
+      ├── app.py                # Flask application
+      ├── swimmer_data.zip      # Compressed swimmer .txt data files
+      ├── .gitattributes
+      ├── README.md
+      └── templates/
+          └── index.html        # Web interface template
+
 
