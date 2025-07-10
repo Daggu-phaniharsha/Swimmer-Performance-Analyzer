@@ -35,7 +35,6 @@ Actionable feedback based on lap time consistency, velocity trends, and heart ra
 A clean Flask-powered web UI for displaying results and plots.
 
 
-
 ## ⚙️ How It Works
 
 1️⃣ Data Ingestion
@@ -82,4 +81,78 @@ Metrics and suggestions
       └── templates/
           └── index.html        # Web interface template
 
+## 🔧 Getting Started
+
+* ✅ Prerequisites
+Ensure Python 3.7+ is installed. Then install the required packages:
+
+    pip install Flask pandas matplotlib scikit-learn numpy
+
+* ▶️ Running the App
+1. Extract the Data
+
+   Unzip swimmer_data.zip into the same folder as app.py.
+
+2. Navigate to the Project Folder
+
+        cd Swimmer_Performance_Analyzer
+
+3. Start the Flask App
+
+        python app.py
+
+4. Open in Browser
+
+   Visit http://127.0.0.1:5000/ to access the main UI.
+
+   For swimmer-specific analysis:
+
+          http://127.0.0.1:5000/swimmer/JohnDoe
+
+
+## 🧪 Technologies Used
+* Python (3.7+)
+
+* Flask – Web framework
+
+* Pandas – Data processing
+
+* Matplotlib – Plotting
+
+* NumPy – Numeric operations
+
+* Scikit-learn – Regression analysis
+
+
+## 🧠 How to Interact
+
+Once the app is live, you can:
+
+   * Enter a swimmer’s name via the UI (if input is provided in index.html)
+
+   * Or access /swimmer/<SwimmerName> directly
+
+You'll get:
+
+* 📊 Performance visualizations
+
+* 🔢 Key stats (lap times, speed, predicted time, heart rate)
+
+* 💬 Personalized improvement tips
+
+
+## 📌 Future Improvements
+
+* Add swimmer profile uploads via the web UI
+
+* Support video-based stroke analysis (via ML/CV)
+
+* Store swimmer history in a database
+
+* Enable login & personalized dashboards
+
+
+
+## 📬 Contact
+Feel free to reach out for suggestions or collaboration ideas!
 
